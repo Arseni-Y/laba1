@@ -66,10 +66,12 @@ public class Complex {
      * @return this Complex object whose value is (this + b)
      */
     public Complex plus(Complex b) {
+        //сложение с сопряжённым
         re += b.re;
-        im += b.im;
+        im += -b.im;
         return this;
     }
+
 
     /**
      * Multiply operation.
@@ -78,12 +80,14 @@ public class Complex {
      */
     public Complex times(Complex b) {
         Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
+        double magnitude = Math.sqrt(b.re * b.re + b.im * b.im);
+        double real = (a.re * b.re - a.im * b.im) * magnitude;
+        double imag = (a.re * b.im + a.im * b.re) * magnitude;
         re = real;
         im = imag;
         return this;
     }
+
 
     /**
      * Square of Complex object's length, we're using square of length to 
